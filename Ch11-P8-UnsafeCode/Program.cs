@@ -58,8 +58,8 @@ namespace Ch11_P8_UnsafeCode
         private static unsafe void UnsafeStackAlloc()
         {
             //char* p = stackalloc char[256];
-            char* p;
-            p = stackalloc char[256];
+            //char* p;
+           // p = stackalloc char[256];
             
             //int* intarray = stackalloc int[100];
             //int* intarray = new int[100];
