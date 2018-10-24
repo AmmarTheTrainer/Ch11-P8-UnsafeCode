@@ -55,6 +55,19 @@ namespace Ch11_P8_UnsafeCode
             Console.ReadLine();
         }
 
+        private static unsafe void UnsafeStackAlloc()
+        {
+            //char* p = stackalloc char[256];
+            char* p;
+            p = stackalloc char[256];
+            
+            //int* intarray = stackalloc int[100];
+            //int* intarray = new int[100];
+            //char* p = char[256];
+            for (int k = 0; k < 256; k++)
+                p[k] = (char)k;
+        }
+
         private static unsafe void UsePointerToPoint()
         {
             // use of regular Dot Operator
