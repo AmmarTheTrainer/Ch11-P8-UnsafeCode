@@ -11,8 +11,8 @@ namespace Ch11_P8_UnsafeCode
         static unsafe void Main(string[] args)
         {
             int myInt2 = 5;
-            SquareIntPointer(&myInt2);
-            Console.WriteLine("myInt: {0}", myInt2);
+            //SquareIntPointer(&myInt2);
+            //Console.WriteLine("myInt: {0}", myInt2);
 
             //unsafe
             //{
@@ -50,20 +50,55 @@ namespace Ch11_P8_UnsafeCode
             //Console.WriteLine("Values after unsafe swap: i = {0}, j = {1}", i, j);
             #endregion
 
-            UsePointerToPoint();
+            //UsePointerToPoint();
+
+            #region Fixed keyword in C#
+
+            fixed( char* c = "c based string" )
+            {
+                //c = "new value for string";
+                //char* ptr = c;
+                //Console.WriteLine(" *ptr = " + *ptr);
+                //Console.WriteLine(" (*c) = " + (c[4]));
+                //for (int i = 0; i < 14; i++)
+                //{
+                //    Console.Write(c[i]);
+                //}
+                //Console.WriteLine();
+                //ptr++;
+                //ptr++;
+                //Console.WriteLine( " *ptr++ = "+ *ptr);
+                //Console.WriteLine( " *c = "+ *c);
+            }
+            //int number = 3;
+            //fixed( int* numberPtr = &number )
+            //{
+
+            //}
+            #endregion
+
+            UseSizeOfOperator();
 
             Console.ReadLine();
+        }
+
+        static void UseSizeOfOperator()
+        {
+            Console.WriteLine("The size of short is {0}.", sizeof(short));
+            Console.WriteLine("The size of int is {0}.", sizeof(int));
+            Console.WriteLine("The size of long is {0}.", sizeof(long));
         }
 
         private static unsafe void UnsafeStackAlloc()
         {
             //char* p = stackalloc char[256];
             //char* p;
-           // p = stackalloc char[256];
-            
+            // p = stackalloc char[256];
+
             //int* intarray = stackalloc int[100];
             //int* intarray = new int[100];
-            //char* p = char[256];
+
+            char* p = stackalloc char[256];
             for (int k = 0; k < 256; k++)
                 p[k] = (char)k;
         }
